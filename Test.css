@@ -1,0 +1,19 @@
+/* Test.css */
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: lightblue; 
+}
+
+.slot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slot {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    font-size: 24px;
+}

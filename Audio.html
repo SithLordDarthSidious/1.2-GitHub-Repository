@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Spencer J. McConnell -->
+<html>
+<head>
+    <title>Secret Message</title>
+    <style>
+        body {
+            background-color: black; /* Set the background color of the page to light black */
+            color: white; /* Set the default font color to white */
+	    font-family: Arial, sans-serif; /* Change the font to Arial or a sans-serif font */
+        }
+    </style>
+</head>
+<body>
+    <h1>Secret Message</h1>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" placeholder="Enter your first name"><br><br>
+    <!-- Input field for the user's first name -->
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" placeholder="Enter your last name"><br><br>
+    <!-- Input field for the user's last name -->
+
+    <label for="zipCode">Zip Code:</label>
+    <input type="text" id="zipCode" placeholder="Enter your zip code"><br><br>
+    <!-- Input field for the user's zip code -->
+
+    <button onclick="checkInputs()">Check</button>
+    <!-- Button to trigger input validation -->
+
+    <p id="result"></p>
+    <!-- Paragraph element to display validation results -->
+
+    <!-- Audio Element -->
+    <audio controls>
+        <source src="us-lab-background-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function checkInputs() {
+            // Get the values entered by the user for first name, last name, and zip code
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const zipCode = document.getElementById('zipCode').value;
+            const resultElement = document.getElementById('result');
+
+            // Combine first name and last name into a single string
+            const fullName = firstName + ' ' + lastName;
+
+            // Check if the combined name has more than 20 characters
+            if (fullName.length > 20) {
+                resultElement.textContent = 'Invalid input: Combined name is too long.';
+                return; // Exit the function if the input is invalid
+            }
+
+            // Check if the zip code has exactly 5 digits using a regular expression
+            if (/^\d{5}$/.test(zipCode)) {
+                resultElement.textContent = 'Valid inputs. Secret message: This is your secret message.';
+            } else {
+                resultElement.textContent = 'Invalid input: Zip code must contain exactly 5 digits.';
+            }
+        }
+    </script>
+</body>
+</html>

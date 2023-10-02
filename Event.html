@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- Spencer J. McConnell -->
+<html>
+<head>
+    <title>Moving Meme</title>
+    <style>
+        /* Set the background color to light blue */
+        body {
+            background-color: lightblue;
+        }
+
+        /* Style for the meme image */
+        #meme {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Moving Meme</h1>
+    
+    <!-- Start Button -->
+    <button id="startButton" onclick="startMoving()">Start</button>
+    
+    <!-- Stop Button -->
+    <button id="stopButton" onclick="stopMoving()" disabled>Stop</button>
+
+    <!-- Meme Image -->
+    <img id="meme" src="Meme.jpg" alt="Meme" width="200">
+
+    <script>
+        let memeInterval; // Variable to store the interval ID
+
+        // Function to move the meme image around the page
+        function moveMeme() {
+            const meme = document.getElementById('meme');
+            const maxX = window.innerWidth - meme.clientWidth;
+            const maxY = window.innerHeight - meme.clientHeight;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            meme.style.left = randomX + 'px';
+            meme.style.top = randomY + 'px';
+        }
+
+        // Function to start moving the meme and disable/enable buttons
+        function startMoving() {
+            const startButton = document.getElementById('startButton');
+            const stopButton = document.getElementById('stopButton');
+
+            // Disable Start button and enable Stop button
+            startButton.disabled = true;
+            stopButton.disabled = false;
+
+            // Start moving the meme at a regular interval
+            memeInterval = setInterval(moveMeme, 1000);
+        }
+
+        // Function to stop moving the meme and disable/enable buttons
+        function stopMoving() {
+            const startButton = document.getElementById('startButton');
+            const stopButton = document.getElementById('stopButton');
+
+            // Disable Stop button and enable Start button
+            stopButton.disabled = true;
+            startButton.disabled = false;
+
+            // Clear the interval to stop moving the meme
+            clearInterval(memeInterval);
+        }
+    </script>
+</body>
+</html>

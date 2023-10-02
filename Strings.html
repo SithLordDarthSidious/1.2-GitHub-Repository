@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Spencer J. McConnell -->
+<html>
+<head>
+    <title>Palindrome Checker</title>
+    <style>
+        /* Set the background color to light blue */
+        body {
+            background-color: lightblue;
+            
+            /* Set the font color to red */
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <label for="word">Enter a word:</label>
+    <input type="text" id="word" placeholder="Enter a word">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="result"></p>
+
+    <script>
+        /* Function to check if a word is a palindrome */
+        function isPalindrome(word) {
+            // Remove spaces and convert the word to lowercase
+            word = word.replace(/ /g, '').toLowerCase();
+            
+            // Compare the word with its reverse
+            return word === word.split('').reverse().join('');
+        }
+
+        /* Function to handle the button click and display the result */
+        function checkPalindrome() {
+            const inputWord = document.getElementById('word').value;
+            const resultElement = document.getElementById('result');
+
+            if (isPalindrome(inputWord)) {
+                resultElement.textContent = `${inputWord} is a palindrome.`;
+            } else {
+                resultElement.textContent = `${inputWord} is not a palindrome.`;
+            }
+        }
+    </script>
+</body>
+</html>
